@@ -12,10 +12,14 @@ export class MongoDatabase {
     try {
       await mongoose.connect(mongoUrl, { dbName: dbName });
 
-      return true
+      return true;
     } catch (error) {
       console.error('Error connecting to MongoDB:', error);
       throw error;
     }
+  }
+
+  static async disconnect() {
+    await mongoose.disconnect();
   }
 }
